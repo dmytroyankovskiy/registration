@@ -1,125 +1,91 @@
 /* Загальні стилі */
 body {
     margin: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ffddc1, #ff6f61);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: radial-gradient(circle, #2c3e50, #34495e);
-    color: #fff;
 }
 
-.main-container {
+/* Головний контейнер */
+.main-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
     width: 100%;
 }
 
-.form-container {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    padding: 30px 40px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-    width: 90%;
+/* Карточка форми */
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     max-width: 400px;
+    width: 90%;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    color: #fff;
+/* Заголовок форми */
+.form-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
     text-align: center;
-}
-
-form h1 {
-    font-size: 2rem;
-    margin-bottom: 5px;
-}
-
-form p {
-    font-size: 0.9rem;
     margin-bottom: 20px;
-    color: #dcdcdc;
 }
 
-.form-group {
-    position: relative;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"] {
+/* Поля вводу */
+.form-group input {
     width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.2);
-    color: #fff;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
     font-size: 1rem;
-    transition: background 0.3s;
+    transition: border-color 0.3s ease;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus {
-    background: rgba(255, 255, 255, 0.3);
+/* Фокус на інпуті */
+.form-group input:focus {
+    border-color: #ff6f61;
     outline: none;
 }
 
-input[type="text"].invalid,
-input[type="email"].invalid,
-input[type="password"].invalid {
-    border: 2px solid red;
-}
-
-input[type="text"].valid,
-input[type="email"].valid,
-input[type="password"].valid {
-    border: 2px solid green;
-}
-
+/* Помилка валідації */
 .error-message {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    color: red;
-    font-size: 0.8rem;
+    color: #ff4d4f;
+    font-size: 0.85rem;
     display: none;
 }
 
-button {
-    padding: 15px;
-    background: linear-gradient(45deg, #ff6f61, #ff9472);
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-button:hover {
-    background: linear-gradient(45deg, #ff9472, #ff6f61);
-}
-
-button:disabled {
-    background: rgba(255, 255, 255, 0.3);
-    cursor: not-allowed;
-}
-
-.show-password {
+/* Чекбокс */
+.checkbox-container {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 0.9rem;
-    color: #dcdcdc;
+    margin-bottom: 15px;
 }
 
-input[type="checkbox"] {
-    transform: scale(1.2);
-    margin: 0;
+/* Кнопка */
+button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    background: #ff6f61;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+    background: #e55347;
 }
