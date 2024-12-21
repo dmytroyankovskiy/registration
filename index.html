@@ -3,39 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Форма реєстрації</title>
+    <title>Реєстрація</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <form id="registrationForm">
-            <h1>Реєстрація</h1>
-            <div class="form-group">
-                <label for="firstName">Ім'я</label>
-                <input type="text" id="firstName" name="firstName" required>
-                <div class="error-message" id="firstNameError"></div>
-            </div>
-            <div class="form-group">
-                <label for="lastName">Прізвище</label>
-                <input type="text" id="lastName" name="lastName" required>
-                <div class="error-message" id="lastNameError"></div>
-            </div>
-            <div class="form-group">
-                <label for="email">Електронна пошта</label>
-                <input type="email" id="email" name="email" required>
-                <div class="error-message" id="emailError"></div>
-            </div>
-            <div class="form-group">
-                <label for="password">Пароль</label>
-                <input type="password" id="password" name="password" required>
-                <div class="error-message" id="passwordError"></div>
-            </div>
-            <div class="form-group checkbox-group">
-                <input type="checkbox" id="showPassword">
-                <label for="showPassword">Показати пароль</label>
-            </div>
-            <button type="submit" id="submitButton" disabled>Надіслати</button>
-        </form>
+    <div class="main-container">
+        <div class="form-container">
+            <form id="registrationForm">
+                <h1>Реєстрація</h1>
+                <p>Заповніть форму нижче, щоб створити обліковий запис</p>
+                <div class="form-group">
+                    <input type="text" id="firstName" name="firstName" placeholder="Ім'я" required>
+                    <div class="error-message" id="firstNameError"></div>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="lastName" name="lastName" placeholder="Прізвище" required>
+                    <div class="error-message" id="lastNameError"></div>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Електронна пошта" required>
+                    <div class="error-message" id="emailError"></div>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" name="password" placeholder="Пароль" required>
+                    <div class="error-message" id="passwordError"></div>
+                </div>
+                <div class="form-group show-password">
+                    <input type="checkbox" id="showPassword">
+                    <label for="showPassword">Показати пароль</label>
+                </div>
+                <button type="submit" id="submitButton" disabled>Зареєструватися</button>
+            </form>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
