@@ -1,66 +1,85 @@
-const authForm = document.getElementById('authForm');
-const firstName = document.getElementById('firstName');
-const lastName = document.getElementById('lastName');
-const email = document.getElementById('email');
-const password = document.getElementById('password');
-const showPassword = document.getElementById('showPassword');
-const submitButton = document.getElementById('submitButton');
+document.addEventListener("DOMContentLoaded", () => {
+    const firstName = document.getElementById('firstName');
+    const lastName = document.getElementById('lastName');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const showPassword = document.getElementById('showPassword');
+    const submitButton = document.getElementById('submitButton');
 
-const firstNameError = document.getElementById('firstNameError');
-const lastNameError = document.getElementById('lastNameError');
-const emailError = document.getElementById('emailError');
-const passwordError = document.getElementById('passwordError');
+    const firstNameError = document.getElementById('firstNameError');
+    const lastNameError = document.getElementById('lastNameError');
+    const emailError = document.getElementById('emailError');
+    const passwordError = document.getElementById('passwordError');
 
-const namePattern = /^[A-ZА-ЯЇЄІ][a-zа-яїєі']+$/;
-const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+    const validateName = (name) => /^[A-ZА-ЯІЇЄҐ][a-zа-яієїґA-ZА-ЯІЇЄҐ]*$/.test(name);
+    const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const validatePassword = (password) => {
+        return (
+            password.length >= 8 &&
+            /[A-Z]/.test(password) &&
+            /[a-z]/.test(password) &&
+            /\d/.test(password) &&
+            /[!@#$%^&*]/.test(password)
+        );
+    };
 
-const validateField = (field, pattern, errorElement, errorMessage) => {
-    if (!field.value) {
-        errorElement.textContent = 'Поле обов\'язкове для заповнення';
-        field.classList.add('invalid');
-        field.classList.remove('valid');
-        return false;
-    } else if (!pattern.test(field.value)) {
-        errorElement.textContent = errorMessage;
-        field.classList.add('invalid');
-        field.classList.remove('valid');
-        return false;
-    } else {
-        errorElement.textContent = '';
-        field.classList.add('valid');
-        field.classList.remove('invalid');
-        return true;
-    }
-};
+    const checkValidity = () => {
+        let isValid = true;
 
-const validateForm = () => {
-    const isFirstNameValid = validateField(firstName, namePattern, firstNameError, "Має починатися з великої літери та містити лише букви");
-    const isLastNameValid = validateField(lastName, namePattern, lastNameError, "Має починатися з великої літери та містити лише букви");
-    const isEmailValid = validateField(email, emailPattern, emailError, "Невірний формат e-mail");
-    const isPasswordValid = validateField(password, passwordPattern, passwordError, "Пароль повинен містити щонайменше 8 символів, одну велику літеру, одну маленьку літеру, одну цифру та один спеціальний символ");
+        if (!validateName(firstName.value)) {
+            firstName.classList.add('invalid');
+            firstNameError.textContent = "Має починатися з великої літери.";
+            firstNameError.style.display = 'block';
+            isValid = false;
+        } else {
+            firstName.classList.remove('invalid');
+            firstNameError.style.display = 'none';
+        }
 
-    submitButton.disabled = !(isFirstNameValid && isLastNameValid && isEmailValid && isPasswordValid);
-};
+        if (!validateName(lastName.value)) {
+            lastName.classList.add('invalid');
+            lastNameError.textContent = "Має починатися з великої літери.";
+            lastNameError.style.display = 'block';
+            isValid = false;
+        } else {
+            lastName.classList.remove('invalid');
+            lastNameError.style.display = 'none';
+        }
 
-firstName.addEventListener('input', validateForm);
-lastName.addEventListener('input', validateForm);
-email.addEventListener('input', validateForm);
-password.addEventListener('input', validateForm);
+        if (!validateEmail(email.value)) {
+            email.classList.add('invalid');
+            emailError.textContent = "Невірний формат e-mail.";
+            emailError.style.display = 'block';
+            isValid = false;
+        } else {
+            email.classList.remove('invalid');
+            emailError.style.display = 'none';
+        }
 
-showPassword.addEventListener('change', () => {
-    password.type = showPassword.checked ? 'text' : 'password';
-});
+        if (!validatePassword(password.value)) {
+            password.classList.add('invalid');
+            passwordError.textContent = "Пароль занадто простий.";
+            passwordError.style.display = 'block';
+            isValid = false;
+        } else {
+            password.classList.remove('invalid');
+            passwordError.style.display = 'none';
+        }
 
-authForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (!submitButton.disabled) {
-        console.log({
-            firstName: firstName.value,
-            lastName: lastName.value,
-            email: email.value,
-            password: password.value
-        });
-        alert('Дані форми відправлено!');
-    }
+        submitButton.disabled = !isValid;
+    };
+
+    firstName.addEventListener('input', checkValidity);
+    lastName.addEventListener('input', checkValidity);
+    email.addEventListener('input', checkValidity);
+    password.addEventListener('input', checkValidity);
+
+    showPassword.addEventListener('change', () => {
+        password.type = showPassword.checked ? 'text' : 'password';
+    });
+
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Дані успішно надіслані!');
+    });
 });
