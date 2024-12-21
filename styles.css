@@ -1,76 +1,60 @@
 body {
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, #6a11cb, #2575fc);
     color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    margin: 0;
 }
 
 .container {
-    max-width: 400px;
-    width: 100%;
-    padding: 20px;
     background: #fff;
+    padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+}
+
+form h1 {
+    margin-bottom: 20px;
+    color: #333;
     text-align: center;
 }
 
-.form-title {
-    font-size: 24px;
-    color: #2575fc;
+.form-group {
     margin-bottom: 20px;
 }
 
-.form-group {
-    margin-bottom: 15px;
-    text-align: left;
-}
-
 label {
-    font-size: 14px;
-    margin-bottom: 5px;
     display: block;
-    color: #555;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
-input {
+input[type="text"],
+input[type="email"],
+input[type="password"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     border-radius: 5px;
-    font-size: 14px;
-    box-sizing: border-box;
+    transition: border-color 0.3s ease;
 }
 
 input:focus {
-    border-color: #2575fc;
+    border-color: #6a11cb;
     outline: none;
-    box-shadow: 0 0 5px rgba(37, 117, 252, 0.5);
 }
 
-button {
-    width: 100%;
-    padding: 12px;
-    background: #2575fc;
-    color: white;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
+input.valid {
+    border-color: green;
 }
 
-button:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-}
-
-button:hover:not(:disabled) {
-    background: #1a5bb8;
+input.invalid {
+    border-color: red;
 }
 
 .error-message {
@@ -78,4 +62,31 @@ button:hover:not(:disabled) {
     font-size: 12px;
     margin-top: 5px;
     display: none;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #6a11cb;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #2575fc;
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
