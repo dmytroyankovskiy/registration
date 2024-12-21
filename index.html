@@ -7,28 +7,27 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="main-container">
-        <div class="form-container">
+    <div class="main-wrapper">
+        <div class="card">
             <form id="registrationForm">
-                <h1>Реєстрація</h1>
-                <p>Заповніть форму нижче, щоб створити обліковий запис</p>
+                <h2 class="form-title">Створення облікового запису</h2>
                 <div class="form-group">
                     <input type="text" id="firstName" name="firstName" placeholder="Ім'я" required>
-                    <div class="error-message" id="firstNameError"></div>
+                    <span class="error-message" id="firstNameError"></span>
                 </div>
                 <div class="form-group">
                     <input type="text" id="lastName" name="lastName" placeholder="Прізвище" required>
-                    <div class="error-message" id="lastNameError"></div>
+                    <span class="error-message" id="lastNameError"></span>
                 </div>
                 <div class="form-group">
                     <input type="email" id="email" name="email" placeholder="Електронна пошта" required>
-                    <div class="error-message" id="emailError"></div>
+                    <span class="error-message" id="emailError"></span>
                 </div>
                 <div class="form-group">
                     <input type="password" id="password" name="password" placeholder="Пароль" required>
-                    <div class="error-message" id="passwordError"></div>
+                    <span class="error-message" id="passwordError"></span>
                 </div>
-                <div class="form-group show-password">
+                <div class="checkbox-container">
                     <input type="checkbox" id="showPassword">
                     <label for="showPassword">Показати пароль</label>
                 </div>
